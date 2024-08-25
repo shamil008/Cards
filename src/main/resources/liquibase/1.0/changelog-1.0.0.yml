@@ -1,0 +1,41 @@
+databaseChangeLog:
+  - changeSet:
+      id: Create Cards Table
+      author: Shamil Vasanov
+      changes:
+        - createTable:
+            tableName: cards
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: holder
+                  type: varchar(256)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: type
+                  type: varchar(8)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: balance
+                  type: numeric(16,2)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: expiry
+                  type: timestamp
+                  constraints:
+                    nullable: false
+              - column:
+                  name: status
+                  type: varchar(16)
+                  constraints:
+                    nullable: false
+            remarks: Table to store information about cards
