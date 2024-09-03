@@ -16,6 +16,7 @@ import java.time.LocalDateTime;
 @EqualsAndHashCode(of = "id")
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 public class CardEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
