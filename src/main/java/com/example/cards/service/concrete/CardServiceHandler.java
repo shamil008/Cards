@@ -1,5 +1,7 @@
 package com.example.cards.service.concrete;
 
+import com.example.cards.aspect.LogIgnore;
+import com.example.cards.aspect.Loggable;
 import com.example.cards.client.UserClient;
 import com.example.cards.dao.repository.CardRepository;
 import com.example.cards.mapper.CardMapper;
@@ -17,6 +19,7 @@ import static com.example.cards.model.enums.CardType.DEBIT;
 @Slf4j
 @Service
 @RequiredArgsConstructor
+@Loggable
 public class CardServiceHandler implements CardService {
     private final CardRepository cardRepository;
     private final UserClient userClient;
@@ -37,7 +40,7 @@ public class CardServiceHandler implements CardService {
 
     @Override
     public void createCard(CardRequest request) {
-        var user = userClient.getUser(1L);
+        var user = userClient.getUser(5L);
         log.info("User is:{}",user.getId());
         cardRepository.save(CARD_MAPPER.buildCardEntity(request));
     }
