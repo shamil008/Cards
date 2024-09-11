@@ -1,6 +1,7 @@
 package com.example.cards.controller;
 
 import com.example.cards.model.request.CardRequest;
+import com.example.cards.model.response.CardResponse;
 import com.example.cards.service.abstraction.CardService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -18,5 +19,10 @@ public class CardController {
     public void createCard(@RequestBody CardRequest request){
         cardService.createCard(request);
 
+    }
+
+    @GetMapping("/{id}")
+    public CardResponse getCard(@PathVariable Long id){
+        return cardService.getCard(id);
     }
 }

@@ -13,3 +13,6 @@ spring:
       ddl-auto: none
   liquibase:
     change-log: classpath:liquibase/changelog-master.yml
+redis:
+  server:
+    urls: redis://localhost:6379
