@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import static com.example.cards.model.enums.ExceptionConstants.UNEXPECTED_EXCEPTION;
 import static org.springframework.http.HttpStatus.INTERNAL_SERVER_ERROR;
+import static org.springframework.http.HttpStatus.NOT_FOUND;
 
 @RestControllerAdvice
 public class ErrorHandler {
@@ -23,6 +24,11 @@ public class ErrorHandler {
                         .message(ex.getMessage())
                         .build()
         );
+    }
+    @ExceptionHandler(NotFoundException.class)
+    @ResponseStatus(NOT_FOUND)
+    public ErrorResponse handle(NotFoundException ex){
+        return new ErrorResponse(ex.getCode(),ex.getMessage());
     }
 
 }
