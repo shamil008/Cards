@@ -11,11 +11,11 @@ import static org.springframework.http.HttpStatus.NOT_FOUND;
 
 @RestControllerAdvice
 public class ErrorHandler {
-//    @ExceptionHandler(Exception.class)
-//    @ResponseStatus(INTERNAL_SERVER_ERROR)
-//    public ErrorResponse handle(Exception ex){
-//        return new ErrorResponse(UNEXPECTED_EXCEPTION.getCode(),UNEXPECTED_EXCEPTION.getMessage());
-//    }
+    @ExceptionHandler(Exception.class)
+    @ResponseStatus(INTERNAL_SERVER_ERROR)
+    public ErrorResponse handle(Exception ex){
+        return new ErrorResponse(UNEXPECTED_EXCEPTION.getCode(),UNEXPECTED_EXCEPTION.getMessage());
+    }
     @ExceptionHandler(CustomFeignException.class)
     public ResponseEntity<ErrorResponse> handle(CustomFeignException ex){
         return ResponseEntity.status(ex.getStatus()).body(

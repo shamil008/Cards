@@ -20,6 +20,7 @@ import java.math.BigDecimal;
 
 import static com.example.cards.mapper.CardMapper.CARD_MAPPER;
 import static com.example.cards.model.enums.CardStatus.ACTIVE;
+import static com.example.cards.model.enums.CardStatus.EXPIRED;
 import static com.example.cards.model.enums.CardType.DEBIT;
 import static com.example.cards.model.enums.ExceptionConstants.CARD_NOT_FOUND;
 
@@ -83,6 +84,14 @@ public class CardServiceHandler implements CardService {
                 .build());
         return CARD_MAPPER.buildCardResponse(card);
 
+
+    }
+
+    @Override
+    public void changeCardStatus(Long id) {
+        var card = cardRepository.findById(id).orElseThrow(() -> new NotFoundException(CARD_NOT_FOUND.getCode(),CARD_NOT_FOUND.getMessage()));
+        if(card.getStatus().equals(ACTIVE))
+            card.setStatus(EXPIRED);
 
     }
 }

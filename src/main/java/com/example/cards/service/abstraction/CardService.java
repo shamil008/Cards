@@ -10,4 +10,7 @@ public interface CardService {
 
     CardResponse getCard(Long id);
 
+    void changeCardStatus(Long id);
+
+
 }
